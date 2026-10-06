@@ -1,0 +1,27 @@
+{
+  "zadane": "28. 9. 2026",
+  "odovzdane": null,
+  "datum_spravy": null,
+  "datum_merania": "28. 9. 2026",
+  "miesto_merania": null,
+  "pristroje": [
+    {
+      "nazov": "Zeiss THEO 010A",
+      "stanovisko": null,
+      "body": [
+        null,
+        null
+      ],
+      "citania": null
+    },
+    {
+      "nazov": "Nivel System DT-2",
+      "stanovisko": null,
+      "body": [
+        null,
+        null
+      ],
+      "citania": null
+    }
+  ]
+}
