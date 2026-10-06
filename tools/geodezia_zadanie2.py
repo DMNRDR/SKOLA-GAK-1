@@ -287,10 +287,12 @@ def report(data, res):
         f"zápisník meraných vodorovných smerov."))
 
     x.append(heading("2  Postup merania"))
+    popis = {"Zeiss THEO 010A": "optický reiteračný teodolit Zeiss THEO 010A s koincidenčným mikrometrom",
+             "Nivel System DT-2": "elektronický teodolit Nivel System DT-2",
+             "Trimble C5": "elektronickú totálnu stanicu Trimble C5"}
     x.append(para(
-        f"Meranie sme vykonali dňa {mer} ({miesto}). Použili sme optický reiteračný teodolit "
-        f"Zeiss THEO 010A s koincidenčným mikrometrom a elektronický teodolit Nivel System DT-2, "
-        f"oba na drevenom statíve."))
+        f"Meranie sme vykonali dňa {mer} ({miesto}). Použili sme "
+        + " a ".join(popis.get(i["nazov"], i["nazov"]) for i in ins) + ", oba na statíve."))
     x.append(para(
         "Prístroj sme postavili nad stanovisko, zcentrovali a zhorizontovali rovnakým postupom ako "
         "v zadaní č. 1. Vodorovné smery sme merali skupinovou metódou. V I. polohe ďalekohľadu sme "
@@ -302,13 +304,19 @@ def report(data, res):
         "Aby sa zmenšil vplyv chýb delenia vodorovného kruhu, nulové čítanie na prvý bod sme "
         "v každej skupine posunuli približne o 200^{g} / 3, teda na 0^{g} v 1. skupine, 70^{g} "
         "v 2. skupine a 140^{g} v 3. skupine."))
-    x.append(para(
-        "Pri teodolite Zeiss THEO 010A sme po zacielení na prvý bod nastavili mikrometrom nulu "
-        "a reiteračnou skrutkou otočili vodorovný kruh na požadované čítanie. Pred každým "
-        "odčítaním sme mikrometrickou skrutkou skoincidovali dvojrysky a odčítali grády a "
-        "desiatky centigónov na kruhu a zvyšok na stupnici mikrometra. Pri prístroji Nivel "
-        "System DT-2 sme nulové čítanie nastavili pomocou klávesnice prístroja a smery sme "
-        "odčítali priamo z displeja."))
+    if any("THEO" in i["nazov"] for i in ins):
+        x.append(para(
+            "Pri teodolite Zeiss THEO 010A sme po zacielení na prvý bod nastavili mikrometrom nulu "
+            "a reiteračnou skrutkou otočili vodorovný kruh na požadované čítanie. Pred každým "
+            "odčítaním sme mikrometrickou skrutkou skoincidovali dvojrysky a odčítali grády a "
+            "desiatky centigónov na kruhu a zvyšok na stupnici mikrometra. Pri elektronickom "
+            "prístroji sme nulové čítanie nastavili pomocou klávesnice a smery sme odčítali "
+            "priamo z displeja."))
+    else:
+        x.append(para(
+            "Pri oboch elektronických prístrojoch sme po zacielení na prvý bod nastavili "
+            "požadované nulové čítanie pomocou klávesnice prístroja a vodorovné smery sme "
+            "odčítali priamo z displeja."))
     x.append(f"__SCHEMA__")
     x.append(para("Obr. 1  Schéma merania vodorovných smerov v dvoch polohách ďalekohľadu",
                   size=20, align="center", after=200))
