@@ -1,9 +1,9 @@
 {
   "zadane": "28. 9. 2026",
-  "odovzdane": null,
-  "datum_spravy": null,
+  "odovzdane": "11. 10. 2026",
+  "datum_spravy": "11. 10. 2026",
   "datum_merania": "28. 9. 2026",
-  "miesto_merania": null,
+  "miesto_merania": "Námestie slobody v Bratislave",
   "pristroje": [
     {
       "nazov": "Nivel System DT-2",
