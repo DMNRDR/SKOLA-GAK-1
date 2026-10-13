@@ -145,7 +145,12 @@ def main():
     download = "--download" in sys.argv
     login()
     files = [p for p in ROOT.rglob("*") if p.is_file()]
-    hashes = {hashlib.sha1(p.read_bytes()).hexdigest() for p in files}
+    hashes = set()
+    for p in files:
+        try:
+            hashes.add(hashlib.sha1(p.read_bytes()).hexdigest())
+        except OSError:  # súbor otvorený napr. vo Worde; stačí zhoda podľa mena
+            pass
     names = {p.name.lower() for p in files}
     cs = courses()
     if not cs:
