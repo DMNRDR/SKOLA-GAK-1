@@ -146,7 +146,7 @@ export default function Home({
 
       <Text style={s.foot}>
         {countQuestions(subject)} otázok + {countGenerators(subject)} generátorov príkladov.{' '}
-        {subject === 'fyz' ? 'Zdroj: prednáška OsnovaSodpovedamiV3 a zoznam príkladov z cvičení.' : subject === 'dg' ? 'Zdroj: tézy na 1. písomku z Metód zobrazovania, pracovné listy a utorková písomka.' : 'Zdroj: tematický plán prednášok z Matematiky 1.'} Zvuky, ikony a herné prvky: Kenney.nl (CC0). Písma: Bricolage Grotesque, Source Sans 3, JetBrains Mono (OFL).
+        {subject === 'fyz' ? 'Zdroj: prednáška OsnovaSodpovedamiV3 a zoznam príkladov z cvičení.' : subject === 'dg' ? 'Zdroj: tézy na 1. písomku z Metód zobrazovania, pracovné listy a utorková písomka.' : 'Zdroj: prednášky doc. Minarechovej (týždne 1 až 4) a tematický plán Matematiky 1.'} Zvuky, ikony a herné prvky: Kenney.nl (CC0). Písma: Bricolage Grotesque, Source Sans 3, JetBrains Mono (OFL).
       </Text>
     </ScrollView>
   );
