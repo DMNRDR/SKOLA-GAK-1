@@ -4,7 +4,7 @@ Zdroj: správa v AIS pošte zo 16. 9. 2026 „Materiály k predmetu Matematika 1
 verejný Google Drive priečinok (prístup bez prihlásenia, materiály pribúdajú priebežne):
 https://drive.google.com/drive/folders/19DQgnZNHZ4kpNEp_3WzvzmsC2ULOSzLp
 
-Stiahnuté 7. 10. 2026.
+Stiahnuté 7. 10. 2026, 4. týždeň 14. 10. 2026.
 
 | Priečinok | Súbor | Strán | Obsah |
 |---|---|---|---|
@@ -15,6 +15,9 @@ Stiahnuté 7. 10. 2026.
 | 1 týždeň | Kap1-Analyticka_geometria.pdf | 50 | kapitola Analytická geometria (sken) |
 | 2 týždeň | Prednaska_3.pdf | 41 | Matice, maticové operácie, hodnosť matice |
 | 3 týždeň | Prednaska_4.pdf | 70 | Determinanty, inverzné matice, metódy riešenia SLAR |
+| 4 týždeň | Prednaska_5.pdf | 10 | Vlastné čísla a vlastné vektory matíc |
+| 4 týždeň | Funkcie_zakladne_vlastnosti.pdf | 83 | Reálna funkcia jednej reálnej premennej: D(f), H(f), zložená a inverzná funkcia, monotónnosť, ohraničenosť, extrémy, párnosť, periodickosť, konvexnosť |
+| 4 týždeň | Kap2-Matice.pdf | 56 | kapitola Matice (sken) |
 | Literatúra | Handlovicova_et_al1.pdf | 193 | skriptá 1 (číselné obory … ) |
 | Literatúra | Handlovicova_et_al2.pdf | 184 | skriptá 2 (integrály …) |
 | Literatúra | kalina_matematika_www.pdf | 297 | M. Kalina: Matematika (STU 2012) |
