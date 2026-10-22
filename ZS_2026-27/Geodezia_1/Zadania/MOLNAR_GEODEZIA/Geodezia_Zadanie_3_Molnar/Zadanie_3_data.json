@@ -1,0 +1,28 @@
+{
+  "zadane": "5. 10. 2026",
+  "odovzdane": "18. 10. 2026",
+  "datum_spravy": "18. 10. 2026",
+  "datum_merania": "5. 10. 2026",
+  "miesto_merania": "Stavebná fakulta STU, Radlinského 11, Bratislava",
+  "libela": {
+    "pristroj": "Zeiss THEO 080A",
+    "vyrobne_cislo": null,
+    "vychylka_pred_dieliky": null,
+    "vychylka_po_dieliky": null,
+    "poznamka": "hodnoty výchylky neboli zapísané v zápisníku"
+  },
+  "pristroje": [
+    {
+      "nazov": "Zeiss THEO 020A",
+      "vyrobne_cislo": "24140",
+      "kolimacia": {"d": 5.96, "a1": [155.0, 154.5, 155.0, 155.0], "a2": [153.5, 155.0, 153.0, 154.5]},
+      "horizontalna_os": {"h": 1.622, "a1": [100.0, 100.1, 100.1, 100.2], "a2": [101.0, 100.7, 100.4, 100.9]}
+    },
+    {
+      "nazov": "Trimble C5",
+      "vyrobne_cislo": "E340741",
+      "kolimacia": {"d": 6.765, "a1": [71.5, 71.9, 71.9, 71.8], "a2": [71.3, 72.0, 71.8, 71.9]},
+      "horizontalna_os": {"h": 1.622, "a1": [101.5, 102.0, 100.9, 101.5], "a2": [101.5, 101.5, 100.2, 101.1]}
+    }
+  ]
+}
