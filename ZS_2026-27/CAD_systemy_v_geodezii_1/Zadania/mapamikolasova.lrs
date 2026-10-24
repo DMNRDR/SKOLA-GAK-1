@@ -1,0 +1,120 @@
+************************************************************************
+*                                                                      *
+*            Tabulka vrstev pro systém WKOKES verze 4.20               *
+*                                                                      *
+************************************************************************
+*                   SCREEN      PRINTER
+* JMENO     KK      COL,WIDTH   COL,WIDTH
+*povinná vrstva
+*administrativní položky (razítko firmy, legenda a jiné nezaøazené položky)
+*bodové pole
+*bodové pole - 
+*dopravní zaøízení - linie
+*dopravní zaøízení - popis
+*dopravní zaøízení - symboly
+*silové vedení podzemní
+*silové vedení podzemní - popis
+*silové vedení nadzemní
+*silové vedení nadzemní - popis
+*silové vedení - symboly
+*vodstvo
+*vodstvo - popis
+*hranice správní
+*hranice správní
+*hranice technické
+*hranice technické
+*hranice ostatní
+*hranice ostatní - popis (i parcelní èísla)
+*symboly inženýrských sítí - neovìøená pøíslušnost
+*kanalizace
+*kanalizace - popis
+*kanalizace - symboly
+*skuteèné kultury pozemkù (ne dle EN)
+*mapové listy (rámy, popisy, ...)
+*nerozlišené inženýrské sítì podzemní
+*nerozlišené inženýrské sítì podzemní - popis
+*nerozlišené inženýrské sítì nadzemní
+*nerozlišené inženýrské sítì nadzemní - popis
+*nerozlišené inženýrské sítì - symboly
+*plynovody
+*plynovody - popis
+*plynovody - symboly
+*polohopis - budovy
+*polohopis - budovy - èísla popisná
+*polohopis - budovy - èísla evidenèní
+*polohopis - budovy - popis
+*polohopis - lemovky budov
+*polohopis - ostatní
+*polohopis - ostatní - popis
+*polohopis - ostatní - symboly
+*polohopis - ploty
+*pomocná vrstva
+*popis mapy
+*sdìlovací vedení podzemní
+*sdìlovací vedení podzemní - popis
+*sdìlovací vedení nadzemní
+*sdìlovací vedení nadzemní - popis
+*sdìlovací vedení - symboly
+*teplovody podzemní
+*teplovody podzemní - popis
+*teplovody nadzemní
+*teplovody nadzemní - popis
+*teplovody - symboly
+*tìžební èinnost
+*vodovody
+*vodovody - popis
+*vodovody - symboly
+*veøejné osvìtlení nadzemní
+*veøejné osvìtlení nadzemní - popis
+*veøejné osvìtlení podzemní
+*veøejné osvìtlení podzemní - popis
+*veøejné osvìtlení - symboly
+*body pro tvorbu vyskopisu
+*výšky vodorovných hran (symboly a popis)
+*výškopisné tvary (hrany, meze, ...)
+*výškopis - vrstevnice hlavní
+*výškopis - vrstevnice vedlejší
+*výškopis - popis
+*výškopis - symboly
+*zeleò
+*zeleò - popis
+*
+* vrstvy pro DMT ATLAS
+* povinné spojnice
+* lomové
+* pøímé
+* ostrovní
+* ostrovní pøímé
+*prvky kreslené barvou 1 (tmavì modrá)
+*prvky kreslené barvou 2 (zelená)
+*prvky kreslené barovu 3 (azurová)
+*prvky kreslené barvou 4 (èervená)
+*prvky kreslené barvou 5 (tmavì fialová)
+*prvky kreslené barvou 6 (hnìdá)
+*prvky kreslené barvou 7 (svìtle šedá)
+*prvky kreslené barvou 8 (tmavì šedá)
+*prvky kreslené barvou 9 (modrá)
+*prvky kreslené barvou 10 (svìtle zelená)
+*prvky kreslené barvou 11 (svìtle azurová)
+*prvky kreslené barvou 12 (svìtle èervená)
+*prvky kreslené barvou 13 (svìtle fialová)
+*prvky kreslené barvou 14 (žlutá)
+*prvky kreslené barvou 15 (èerná/bílá)
+*vrstva vytvoøená programem WKOKES
+  plochy   1   9   9
+*vrstva vytvoøená programem WKOKES
+  budova   1   15   15
+*vrstva vytvoøená programem WKOKES
+  cesta   1   12   12
+*vrstva vytvoøená programem WKOKES
+  zatravnenie   1   142   142
+*vrstva vytvoøená programem WKOKES
+  obrubnik   1   3   3
+*vrstva vytvoøená programem WKOKES
+  sachta   1   6   6
+*vrstva vytvoøená programem WKOKES
+  stromy   1   10   10
+*vrstva vytvoøená programem WKOKES
+  znaky   1   13   13
+*vrstva vytvoøená programem WKOKES
+  popis   1   15   15
