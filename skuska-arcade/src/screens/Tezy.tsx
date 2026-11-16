@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Bar, C, F, GButton, haptic, Header } from '../components/ui';
 import { Teza, TEZY, TEZY_SECTIONS } from '../data/dg-tezy';
+import { TEZY2, TEZY2_SECTIONS } from '../data/dg-tezy2';
+import { TEZY3, TEZY3_SECTIONS } from '../data/dg-tezy3';
 import { DgPic, Rysovacka } from '../learn/widgets/deskriptiva';
 import { shuffle } from '../util';
 
@@ -11,11 +13,34 @@ import { shuffle } from '../util';
 const COLOR = C.teal;
 type Filter = 'teoria' | 'rys' | 'vsetko';
 
-export default function Tezy({ onBack, onXp }: { onBack: () => void; onXp: (xp: number) => void }) {
+type TSet = { items: Teza[]; sections: string[]; title: string; lead: string };
+const SETS: Record<1 | 2 | 3, TSet> = {
+  1: {
+    items: TEZY,
+    sections: TEZY_SECTIONS,
+    title: 'Tézy 1. písomky',
+    lead: 'Všetky otázky z dokumentu od učiteľky („1T – Okruh otázok“), čísla sedia s dokumentom. Ťukni na otázku a uvidíš vzorovú odpoveď a obrázok. Pri rysovaní si konštrukciu odkrývaš krok po kroku.',
+  },
+  2: {
+    items: TEZY2,
+    sections: TEZY2_SECTIONS,
+    title: 'Tézy 2. písomky',
+    lead: 'Všetky otázky a úlohy z dokumentu „2 Test – okruh otázok a úloh“ (AIS, 27. 10.), čísla sedia s dokumentom. Písomka je v piatok 13. 11. na cvičení. Ťukni na otázku a uvidíš vzorovú odpoveď s náčrtom, pri rysovacích úlohách konštrukciu krok po kroku.',
+  },
+  3: {
+    items: TEZY3,
+    sections: TEZY3_SECTIONS,
+    title: 'Tézy 3. písomky',
+    lead: 'Okruh 3T učiteľka ešte nezverejnila. Otázky sú zostavené podľa sylabu a oficiálnych „Typov úloh“ zo skrípt Vajsáblovej (kartografia), čísla nie sú z dokumentu. Keď vyjde 3T, doplním ich podľa neho. Ťukni na otázku a uvidíš vzorovú odpoveď, pri rysovacích úlohách konštrukciu krok po kroku.',
+  },
+};
+
+export default function Tezy({ onBack, onXp, set = 1 }: { onBack: () => void; onXp: (xp: number) => void; set?: 1 | 2 | 3 }) {
   const [mode, setMode] = useState<'prehlad' | 'skusanie'>('prehlad');
+  const data = SETS[set];
   return (
     <View style={{ flex: 1 }}>
-      <Header kicker="Metódy zobrazovania" title="Tézy 1. písomky" onBack={onBack} />
+      <Header kicker="Metódy zobrazovania" title={data.title} onBack={onBack} />
       <View style={s.modes}>
         {(['prehlad', 'skusanie'] as const).map((m) => (
           <Pressable
@@ -30,7 +55,7 @@ export default function Tezy({ onBack, onXp }: { onBack: () => void; onXp: (xp: 
           </Pressable>
         ))}
       </View>
-      {mode === 'prehlad' ? <Prehlad /> : <Skusanie onXp={onXp} />}
+      {mode === 'prehlad' ? <Prehlad data={data} /> : <Skusanie data={data} onXp={onXp} />}
     </View>
   );
 }
@@ -52,15 +77,15 @@ function Tag({ draw }: { draw?: boolean }) {
   return <Text style={[s.tag, { color: draw ? C.orange : COLOR, borderColor: draw ? C.orange : COLOR }]}>{draw ? 'RYSOVANIE' : 'TEÓRIA'}</Text>;
 }
 
-function Prehlad() {
+function Prehlad({ data }: { data: TSet }) {
   const [open, setOpen] = useState<string | null>(null);
   return (
     <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 48, gap: 10 }}>
-      <Text style={s.lead}>Všetky otázky z dokumentu od učiteľky („1T – Okruh otázok“), čísla sedia s dokumentom. Ťukni na otázku a uvidíš vzorovú odpoveď a obrázok. Pri rysovaní si konštrukciu odkrývaš krok po kroku.</Text>
-      {TEZY_SECTIONS.map((sec) => (
+      <Text style={s.lead}>{data.lead}</Text>
+      {data.sections.map((sec) => (
         <View key={sec} style={{ gap: 8 }}>
           <Text style={s.section}>{sec}</Text>
-          {TEZY.filter((t) => t.sec === sec).map((t) => {
+          {data.items.filter((t) => t.sec === sec).map((t) => {
             const on = open === t.id;
             return (
               <View key={t.id} style={[s.card, on && { borderColor: COLOR }]}>
@@ -92,7 +117,7 @@ function Prehlad() {
   );
 }
 
-function Skusanie({ onXp }: { onXp: (xp: number) => void }) {
+function Skusanie({ data, onXp }: { data: TSet; onXp: (xp: number) => void }) {
   const [filter, setFilter] = useState<Filter>('teoria');
   const [queue, setQueue] = useState<Teza[] | null>(null);
   const [total, setTotal] = useState(0);
@@ -100,7 +125,7 @@ function Skusanie({ onXp }: { onXp: (xp: number) => void }) {
   const [firstTry, setFirstTry] = useState<Set<string>>(new Set());
   const [missed, setMissed] = useState<Set<string>>(new Set());
 
-  const pool = useMemo(() => TEZY.filter((t) => (filter === 'vsetko' ? true : filter === 'rys' ? t.draw : !t.draw)), [filter]);
+  const pool = useMemo(() => data.items.filter((t) => (filter === 'vsetko' ? true : filter === 'rys' ? t.draw : !t.draw)), [filter, data]);
 
   const start = (items: Teza[]) => {
     setQueue(shuffle(items));
@@ -135,7 +160,7 @@ function Skusanie({ onXp }: { onXp: (xp: number) => void }) {
 
   if (!queue.length) {
     const known = firstTry.size;
-    const wrong = TEZY.filter((t) => missed.has(t.id));
+    const wrong = data.items.filter((t) => missed.has(t.id));
     return (
       <ScrollView contentContainerStyle={{ padding: 16, gap: 14, paddingBottom: 48 }}>
         <Text style={s.big}>

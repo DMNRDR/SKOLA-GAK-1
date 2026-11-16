@@ -19,6 +19,9 @@ export default function Home({
   onTezy,
   onNavod,
   onMatTest2,
+  onExam,
+  onMatTest3,
+  onDgTest3,
   onLearn,
   onPlay,
   onGame,
@@ -27,9 +30,12 @@ export default function Home({
   subject: SubjectId;
   setSubject: (s: SubjectId) => void;
   onCampaign: () => void;
-  onTezy: () => void;
-  onNavod: () => void;
+  onTezy: (set?: 1 | 2 | 3) => void;
+  onDgTest3: () => void;
+  onNavod: (zadanie: 5 | 7) => void;
   onMatTest2: () => void;
+  onExam: () => void;
+  onMatTest3: () => void;
   onLearn: (topic?: string) => void;
   onPlay: (c: GameConfig) => void;
   onGame: (g: GameId) => void;
@@ -99,12 +105,42 @@ export default function Home({
       {/* deskriptíva: tézy na 1. písomku */}
       {subject === 'dg' && (
         <View style={{ gap: 10 }}>
-          <Text style={s.section}>Písomka</Text>
-          <Press color={C.ink} onPress={onTezy} inner={{ padding: 18, gap: 6 }}>
-            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>DOKUMENT OD UČITEĽKY</Text>
-            <Text style={s.bigBtn}>Tézy 1. písomky</Text>
-            <Text style={[s.small, { color: '#fff' }]}>Každá otázka so vzorovou odpoveďou a obrázkom. Skúšanie na teóriu aj rysovanie.</Text>
+          <Text style={s.section}>3. písomka · 13. týždeň (kartografia)</Text>
+          <Press color={C.teal} onPress={onDgTest3} inner={{ padding: 18, gap: 6 }}>
+            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>7 LEKCIÍ · TÉZY 3 · LEVELY 1 AŽ 4</Text>
+            <Text style={s.bigBtn}>Nauč sa na 3. písomku</Text>
+            <Text style={[s.small, { color: '#fff' }]}>Azimutálne, valcové, kužeľové, nepravé a polykónické zobrazenia, ortodróma. Rysovačky sietí krok po kroku a skúšobná písomka na 25 minút.</Text>
           </Press>
+          <Text style={s.section}>2. písomka · pi 13. 11.</Text>
+          <Press color={C.orange} onPress={() => onLearn('pisomka2')} inner={{ padding: 18, gap: 6 }}>
+            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>4 TÉMY · KLIKACIE LEKCIE</Text>
+            <Text style={s.bigBtn}>Nauč sa na 2. písomku</Text>
+            <Text style={[s.small, { color: '#fff' }]}>Axonometria, lineárna perspektíva, rotačné plochy, fotogrametria. Rysovačky krok po kroku a pokusy na dotyk.</Text>
+          </Press>
+          <Press color={C.ink} onPress={() => onTezy(2)} inner={{ padding: 18, gap: 6 }}>
+            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>OKRUH 2T OD UČITEĽKY · 38 OTÁZOK</Text>
+            <Text style={s.bigBtn}>Tézy 2. písomky</Text>
+            <Text style={[s.small, { color: '#fff' }]}>Každá otázka zo zverejneného okruhu so vzorovou odpoveďou a náčrtom. Skúšanie na teóriu aj rysovanie.</Text>
+          </Press>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 4 }}>
+            {(
+              [
+                ['axonometria', 'Axonometria'],
+                ['perspektiva', 'Perspektíva'],
+                ['rotacne', 'Rotačné plochy'],
+                ['fotogrametria', 'Fotogrametria'],
+              ] as const
+            ).map(([id, l]) => (
+              <Pressable key={id} onPress={() => onLearn(id)} style={({ pressed }) => [s.link, { marginRight: 10 }, pressed && { opacity: 0.6 }]}>
+                <Text style={s.linkText}>{l}</Text>
+                <Icon name="next" size={16} />
+              </Pressable>
+            ))}
+          </View>
+          <Pressable onPress={() => onTezy(1)} style={({ pressed }) => [s.link, pressed && { opacity: 0.6 }]}>
+            <Text style={s.linkText}>Tézy 1. písomky (16. 10.)</Text>
+            <Icon name="next" size={16} />
+          </Pressable>
         </View>
       )}
 
@@ -112,23 +148,37 @@ export default function Home({
       {subject === 'geo' && (
         <View style={{ gap: 10 }}>
           <Text style={s.section}>Dnes na cvičení</Text>
-          <Press color={C.ink} onPress={onNavod} inner={{ padding: 18, gap: 6 }}>
-            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>TUTORIÁL · PO 12:00 · B321</Text>
-            <Text style={s.bigBtn}>Zadanie 5 v praxi</Text>
-            <Text style={[s.small, { color: '#fff' }]}>Krok po kroku: čo napísať do Excelu, aké vzorce a čo ti má vyjsť. S tvojimi číslami (zadanie č. 15).</Text>
+          <Press color={C.ink} onPress={() => onNavod(7)} inner={{ padding: 18, gap: 6 }}>
+            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>TUTORIÁL · PO 9. 11. · DT-2 A TRIMBLE C5</Text>
+            <Text style={s.bigBtn}>Zadanie 7 v praxi: zvislé uhly</Text>
+            <Text style={[s.small, { color: '#fff' }]}>Krok po kroku: čo si vziať, meranie v I. a II. polohe, 3 skupiny, indexová chyba so vzorcami a kalkulačka na overenie.</Text>
           </Press>
+          <Pressable onPress={() => onNavod(5)} style={({ pressed }) => [s.link, pressed && { opacity: 0.6 }]}>
+            <Text style={s.linkText}>Zadanie 5 v praxi (zákon hromadenia chýb, Excel)</Text>
+            <Icon name="next" size={16} />
+          </Pressable>
         </View>
       )}
 
-      {/* matematika: sústredená príprava z materiálov po 1. písomke */}
+      {/* matematika: príprava na skúšku (týždne 1 až 6) a staršia 2. písomka */}
       {subject === 'mat' && (
         <View style={{ gap: 10 }}>
-          <Text style={s.section}>2. písomka</Text>
-          <Press color={C.orange} onPress={onMatTest2} inner={{ padding: 18, gap: 6 }}>
-            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>DNES · STREDA 21. 10.</Text>
-            <Text style={s.bigBtn}>Príprava na druhú písomku</Text>
-            <Text style={[s.small, { color: '#fff' }]}>Inverzná matica a sústavy rovníc (Gauss, Cramer). Výklad aj spoločný tréning.</Text>
+          <Text style={s.section}>3. písomka</Text>
+          <Press color={C.orange} onPress={onMatTest3} inner={{ padding: 18, gap: 6 }}>
+            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>IBA DEFINIČNÝ OBOR</Text>
+            <Text style={s.bigBtn}>3. písomka: definičný obor</Text>
+            <Text style={[s.small, { color: '#fff' }]}>5 pravidiel s obrázkom, kombinácie a tabuľka znamienok, 12 príkladov na precvičenie a test.</Text>
           </Press>
+          <Text style={[s.section, { marginTop: 12 }]}>Skúška</Text>
+          <Press color={C.ink} onPress={onExam} inner={{ padding: 18, gap: 6 }}>
+            <Text style={[s.mono, { color: '#fff', opacity: 0.9 }]}>6 OKRUHOV · TÝŽDNE 1 AŽ 6</Text>
+            <Text style={s.bigBtn}>Príprava na skúšku z Matematiky 1</Text>
+            <Text style={[s.small, { color: '#fff' }]}>Ťaháky vzorcov po symboloch, riešený typový príklad, generované príklady a na konci skúškový test so známkou.</Text>
+          </Press>
+          <Pressable onPress={onMatTest2} style={({ pressed }) => [s.link, pressed && { opacity: 0.6 }]}>
+            <Text style={s.linkText}>2. písomka (21. 10.): inverzná matica a sústavy</Text>
+            <Icon name="next" size={16} />
+          </Pressable>
         </View>
       )}
 
@@ -188,7 +238,7 @@ export default function Home({
 
       <Text style={s.foot}>
         {countQuestions(subject)} otázok + {countGenerators(subject)} generátorov príkladov.{' '}
-        {subject === 'fyz' ? 'Zdroj: prednáška OsnovaSodpovedamiV3 a zoznam príkladov z cvičení.' : subject === 'dg' ? 'Zdroj: tézy na 1. písomku z Metód zobrazovania, pracovné listy a utorková písomka.' : subject === 'geo' ? 'Zdroj: Zadanie 5 z Geodézie 1 (doc. Marčiš, AIS), vzorový príklad a individuálne zadanie č. 15.' : 'Zdroj: prednášky doc. Minarechovej (týždne 1 až 6), hárok z cvičenia K prednáške 10 a tematický plán Matematiky 1.'} Zvuky, ikony a herné prvky: Kenney.nl (CC0). Písma: Bricolage Grotesque, Source Sans 3, JetBrains Mono (OFL).
+        {subject === 'fyz' ? 'Zdroj: prednáška OsnovaSodpovedamiV3 a zoznam príkladov z cvičení.' : subject === 'dg' ? 'Zdroj: tézy na 1. a 2. písomku z Metód zobrazovania (AIS), prednášky a cvičenia T. Rückschlossovej, pracovné listy a utorková písomka.' : subject === 'geo' ? 'Zdroj: Zadanie 5 z Geodézie 1 (doc. Marčiš, AIS), vzorový príklad a individuálne zadanie č. 15.' : 'Zdroj: prednášky doc. Minarechovej (týždne 1 až 6), hárok z cvičenia K prednáške 10 a tematický plán Matematiky 1.'} Zvuky, ikony a herné prvky: Kenney.nl (CC0). Písma: Bricolage Grotesque, Source Sans 3, JetBrains Mono (OFL).
       </Text>
     </ScrollView>
   );
